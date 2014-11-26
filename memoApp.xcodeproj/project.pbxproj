@@ -10,7 +10,7 @@
 		9DF6AF231A26005E00AAF2A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF221A26005E00AAF2A1 /* main.m */; };
 		9DF6AF261A26005E00AAF2A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF251A26005E00AAF2A1 /* AppDelegate.m */; };
 		9DF6AF291A26005E00AAF2A1 /* memoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF271A26005E00AAF2A1 /* memoApp.xcdatamodeld */; };
-		9DF6AF2C1A26005E00AAF2A1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF2B1A26005E00AAF2A1 /* ViewController.m */; };
+		9DF6AF2C1A26005E00AAF2A1 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF2B1A26005E00AAF2A1 /* ListViewController.m */; };
 		9DF6AF2F1A26005E00AAF2A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9DF6AF2D1A26005E00AAF2A1 /* Main.storyboard */; };
 		9DF6AF311A26005E00AAF2A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9DF6AF301A26005E00AAF2A1 /* Images.xcassets */; };
 		9DF6AF341A26005E00AAF2A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9DF6AF321A26005E00AAF2A1 /* LaunchScreen.xib */; };
@@ -34,8 +34,8 @@
 		9DF6AF241A26005E00AAF2A1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9DF6AF251A26005E00AAF2A1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9DF6AF281A26005E00AAF2A1 /* memoApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = memoApp.xcdatamodel; sourceTree = "<group>"; };
-		9DF6AF2A1A26005E00AAF2A1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		9DF6AF2B1A26005E00AAF2A1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9DF6AF2A1A26005E00AAF2A1 /* ListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		9DF6AF2B1A26005E00AAF2A1 /* ListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		9DF6AF2E1A26005E00AAF2A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9DF6AF301A26005E00AAF2A1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9DF6AF331A26005E00AAF2A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -85,8 +85,8 @@
 			children = (
 				9DF6AF241A26005E00AAF2A1 /* AppDelegate.h */,
 				9DF6AF251A26005E00AAF2A1 /* AppDelegate.m */,
-				9DF6AF2A1A26005E00AAF2A1 /* ViewController.h */,
-				9DF6AF2B1A26005E00AAF2A1 /* ViewController.m */,
+				9DF6AF2A1A26005E00AAF2A1 /* ListViewController.h */,
+				9DF6AF2B1A26005E00AAF2A1 /* ListViewController.m */,
 				9DF6AF2D1A26005E00AAF2A1 /* Main.storyboard */,
 				9DF6AF301A26005E00AAF2A1 /* Images.xcassets */,
 				9DF6AF321A26005E00AAF2A1 /* LaunchScreen.xib */,
@@ -224,7 +224,7 @@
 			files = (
 				9DF6AF291A26005E00AAF2A1 /* memoApp.xcdatamodeld in Sources */,
 				9DF6AF261A26005E00AAF2A1 /* AppDelegate.m in Sources */,
-				9DF6AF2C1A26005E00AAF2A1 /* ViewController.m in Sources */,
+				9DF6AF2C1A26005E00AAF2A1 /* ListViewController.m in Sources */,
 				9DF6AF231A26005E00AAF2A1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
