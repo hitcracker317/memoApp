@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A0C09CE8-18F5-4FB9-8665-D0039E781939</string>
+	<key>IDESourceControlProjectName</key>
+	<string>memoApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D751290AADB26FD30D9ADE846E5ABB6F5B35D3FA</key>
+		<string>github.com:hitcracker317/memoApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>memoApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D751290AADB26FD30D9ADE846E5ABB6F5B35D3FA</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:hitcracker317/memoApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D751290AADB26FD30D9ADE846E5ABB6F5B35D3FA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D751290AADB26FD30D9ADE846E5ABB6F5B35D3FA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>memoApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>

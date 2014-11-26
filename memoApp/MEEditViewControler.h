@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  EditViewControlerViewController.h
 //  memoApp
 //
 //  Created by maeda on 2014/11/26.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ListViewController : UIViewController
-
+@interface MEEditViewControler : UIViewController
 
 @end
-
