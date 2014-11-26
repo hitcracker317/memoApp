@@ -1,0 +1,2 @@
+memoApp
+# CoreDataのお勉強
