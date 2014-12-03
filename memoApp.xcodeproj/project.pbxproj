@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9DC3DC461A2F3A7D00E429DE /* Memo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DC3DC451A2F3A7D00E429DE /* Memo.m */; };
 		9DF6AF231A26005E00AAF2A1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF221A26005E00AAF2A1 /* main.m */; };
 		9DF6AF261A26005E00AAF2A1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF251A26005E00AAF2A1 /* AppDelegate.m */; };
 		9DF6AF291A26005E00AAF2A1 /* memoApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF271A26005E00AAF2A1 /* memoApp.xcdatamodeld */; };
@@ -30,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9DC3DC441A2F3A7D00E429DE /* Memo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Memo.h; sourceTree = "<group>"; };
+		9DC3DC451A2F3A7D00E429DE /* Memo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Memo.m; sourceTree = "<group>"; };
 		9DF6AF1D1A26005E00AAF2A1 /* memoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9DF6AF211A26005E00AAF2A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9DF6AF221A26005E00AAF2A1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -68,6 +71,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DC3DC431A2F34E200E429DE /* viwwController */ = {
+			isa = PBXGroup;
+			children = (
+				9DF6AF2A1A26005E00AAF2A1 /* MEListViewController.h */,
+				9DF6AF2B1A26005E00AAF2A1 /* MEListViewController.m */,
+				9DF6AF491A260B7700AAF2A1 /* MEEditViewControler.h */,
+				9DF6AF4A1A260B7700AAF2A1 /* MEEditViewControler.m */,
+				9DF6AF4C1A2618EF00AAF2A1 /* MEInfoViewController.h */,
+				9DF6AF4D1A2618EF00AAF2A1 /* MEInfoViewController.m */,
+			);
+			name = viwwController;
+			sourceTree = "<group>";
+		};
+		9DC3DC471A2F3BC400E429DE /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				9DC3DC441A2F3A7D00E429DE /* Memo.h */,
+				9DC3DC451A2F3A7D00E429DE /* Memo.m */,
+			);
+			name = Entity;
+			sourceTree = "<group>";
+		};
 		9DF6AF141A26005E00AAF2A1 = {
 			isa = PBXGroup;
 			children = (
@@ -91,16 +116,12 @@
 			children = (
 				9DF6AF241A26005E00AAF2A1 /* AppDelegate.h */,
 				9DF6AF251A26005E00AAF2A1 /* AppDelegate.m */,
-				9DF6AF2A1A26005E00AAF2A1 /* MEListViewController.h */,
-				9DF6AF2B1A26005E00AAF2A1 /* MEListViewController.m */,
-				9DF6AF491A260B7700AAF2A1 /* MEEditViewControler.h */,
-				9DF6AF4A1A260B7700AAF2A1 /* MEEditViewControler.m */,
-				9DF6AF4C1A2618EF00AAF2A1 /* MEInfoViewController.h */,
-				9DF6AF4D1A2618EF00AAF2A1 /* MEInfoViewController.m */,
+				9DC3DC431A2F34E200E429DE /* viwwController */,
 				9DF6AF2D1A26005E00AAF2A1 /* Main.storyboard */,
 				9DF6AF301A26005E00AAF2A1 /* Images.xcassets */,
 				9DF6AF321A26005E00AAF2A1 /* LaunchScreen.xib */,
 				9DF6AF271A26005E00AAF2A1 /* memoApp.xcdatamodeld */,
+				9DC3DC471A2F3BC400E429DE /* Entity */,
 				9DF6AF201A26005E00AAF2A1 /* Supporting Files */,
 			);
 			path = memoApp;
@@ -236,6 +257,7 @@
 				9DF6AF4B1A260B7700AAF2A1 /* MEEditViewControler.m in Sources */,
 				9DF6AF4E1A2618EF00AAF2A1 /* MEInfoViewController.m in Sources */,
 				9DF6AF261A26005E00AAF2A1 /* AppDelegate.m in Sources */,
+				9DC3DC461A2F3A7D00E429DE /* Memo.m in Sources */,
 				9DF6AF2C1A26005E00AAF2A1 /* MEListViewController.m in Sources */,
 				9DF6AF231A26005E00AAF2A1 /* main.m in Sources */,
 			);
@@ -428,6 +450,7 @@
 				9DF6AF451A26005E00AAF2A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9DF6AF461A26005E00AAF2A1 /* Build configuration list for PBXNativeTarget "memoAppTests" */ = {
 			isa = XCConfigurationList;
@@ -436,6 +459,7 @@
 				9DF6AF481A26005E00AAF2A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

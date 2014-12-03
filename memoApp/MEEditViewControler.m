@@ -8,7 +8,13 @@
 
 #import "MEEditViewControler.h"
 
+#import "AppDelegate.h"
+#import "Memo.h"
+
 @interface MEEditViewControler ()
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *addressTextField;
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 
 @end
 
@@ -19,19 +25,36 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (IBAction)cancel:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)saveContents:(id)sender {
+    
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    
+    //NSManagedObjectContextを取得
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    //エンティティのオブジェクトを生成。insertNewObjectForEntityForNameの引数にはエンティティの名前を指定。
+    Memo *memoEntity = (Memo*)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext:context];
+    
+    //エンティティのAttributeに各プロパティを格納
+    //forKeyにはhAttributeの名前を指定
+    [memoEntity setValue:self.nameTextField.text forKey:@"name"];
+    [memoEntity setValue:self.addressTextField.text forKey:@"address"];
+    [memoEntity setValue:self.phoneTextField.text forKey:@"phone"];
+    [memoEntity setValue:[NSDate date] forKey:@"date"];
+    
+    //NSManagedObjectContextのsaveメソッドを読んで、作成したNSManagedObjectをDBに保存
+    NSError *error = nil;
+    if (![context save:&error]) {
+        NSLog(@"error = %@", error);
+    } else {
+        NSLog(@"Insert Completed.");
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
-*/
 
 @end
