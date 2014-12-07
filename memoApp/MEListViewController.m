@@ -50,9 +50,15 @@ static NSString *const cellIdentifier = @"cell";
     //NSFetchクラスを使用して、どのエンティティからデータを取得するのかを指定
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Memo"];
     
+    //ソート条件を指定
+    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
+    NSArray *sortArray = [[NSArray alloc] initWithObjects:sort, nil]; //ソート条件を指定した配列を生成
+    [request setSortDescriptors:sortArray]; //NSfetchオブジェクトに先ほど生成した配列をセット
+    
     //先ほど生成したNSFetchオブジェクトの設定により、NSManagedObjectContextからデータを取得。
     //取得してきたデータを配列に格納
     self.listArray = [self.managedObjectContext executeFetchRequest:request error:nil];
+
     
 }
 
