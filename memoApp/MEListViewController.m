@@ -8,6 +8,8 @@
 
 #import "MEListViewController.h"
 
+#import "MEInfoViewController.h"
+
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 
@@ -18,6 +20,7 @@ static NSString *const cellIdentifier = @"cell";
 @property (nonatomic) NSArray *listArray;
 
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) NSManagedObject *object;
 
 @end
 
@@ -73,15 +76,28 @@ static NSString *const cellIdentifier = @"cell";
     }
     
     //配列からデータ(NSManagedObject)を取り出す
-    NSManagedObject *object = self.listArray[indexPath.row];
+    self.object = self.listArray[indexPath.row];
     //valueForKeyメソッドの引数にエンティティのAttribute名を指定することで、Attributeに格納されているデータを取得
-    cell.textLabel.text = [object valueForKey:@"name"];
+    cell.textLabel.text = [self.object valueForKey:@"name"];
     return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"選択されたセル:%ld",indexPath.row);
+    
+    self.object = self.listArray[indexPath.row];
+    //詳細ページへ遷移
+    [self performSegueWithIdentifier:@"pushInfoViewController" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ( [[segue identifier] isEqualToString:@"pushInfoViewController"] ) {
+        MEInfoViewController *infoViewController = [segue destinationViewController];
+        //遷移先のビューコントローラーに値を受け渡す
+        infoViewController.object = self.object;
+    }
 }
 
 @end

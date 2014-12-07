@@ -9,6 +9,10 @@
 #import "MEInfoViewController.h"
 
 @interface MEInfoViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @end
 
@@ -16,22 +20,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.nameLabel.text = [self.object valueForKey:@"name"];
+    self.addressLabel.text = [self.object valueForKey:@"address"];
+    self.phoneLabel.text = [self.object valueForKey:@"phone"];
+    
+    //NSDateをNSStringに変換
+    NSDateFormatter *format = [NSDateFormatter new];
+    [format setDateFormat:@"yyyy年M月d日:H時m分"]; //NSDateの表示形式を指定
+    NSString *dateString = [format stringFromDate:[self.object valueForKey:@"date"]];
+    self.dateLabel.text = dateString;
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)popViewController:(id)sender {
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

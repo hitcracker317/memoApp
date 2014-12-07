@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#import <CoreData/CoreData.h>
+
 @interface MEInfoViewController : UIViewController
+
+@property (nonatomic) NSManagedObject *object;
 
 @end
