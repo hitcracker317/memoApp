@@ -97,6 +97,39 @@ static NSString *const cellIdentifier = @"cell";
     [self performSegueWithIdentifier:@"pushInfoViewController" sender:self];
 }
 
+#pragma mark - UITableViewEditDelagate
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        //指定したリストのデータを削除
+        self.object = self.listArray[indexPath.row];
+        [self.managedObjectContext deleteObject:self.object];
+        
+        //データを格納している配列からも削除
+        NSMutableArray *mutableListArray = [self.listArray mutableCopy];
+        [mutableListArray removeObjectAtIndex:indexPath.row];
+        self.listArray = [mutableListArray copy];
+        
+        //削除したという状態をNSManagedObjectContextに反映
+        NSError *error = nil;
+        if (![self.managedObjectContext save:&error]) {
+            NSLog(@"error = %@", error);
+        } else {
+            NSLog(@"削除完了！！");
+        }
+        
+        //削除したときのテーブルビューのアニメーション
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+}
+
+//テーブルビューを編集モード有効にする
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ( [[segue identifier] isEqualToString:@"pushInfoViewController"] ) {
