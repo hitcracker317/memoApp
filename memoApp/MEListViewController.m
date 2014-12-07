@@ -8,10 +8,16 @@
 
 #import "MEListViewController.h"
 
+#import "AppDelegate.h"
+#import <CoreData/CoreData.h>
+
 static NSString *const cellIdentifier = @"cell";
 
 @interface MEListViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
+@property (nonatomic) NSArray *listArray;
+
+@property (nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end
 
@@ -27,12 +33,32 @@ static NSString *const cellIdentifier = @"cell";
     self.automaticallyAdjustsScrollViewInsets = NO;
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [self getListData];
+    [self.listTableView reloadData];
+}
+
+- (void)getListData{
+    
+    //NSManagedObjectの取得
+    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    self.managedObjectContext = [delegate managedObjectContext];
+    
+    //NSFetchクラスを使用して、どのエンティティからデータを取得するのかを指定
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Memo"];
+    
+    //先ほど生成したNSFetchオブジェクトの設定により、NSManagedObjectContextからデータを取得。
+    //取得してきたデータを配列に格納
+    self.listArray = [self.managedObjectContext executeFetchRequest:request error:nil];
+    
+}
+
 #pragma mark - UITableViewDelagate
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.listArray.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -40,11 +66,16 @@ static NSString *const cellIdentifier = @"cell";
 }
 
 - (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"Item:%ld",(long)indexPath.row];
+    
+    //配列からデータ(NSManagedObject)を取り出す
+    NSManagedObject *object = self.listArray[indexPath.row];
+    //valueForKeyメソッドの引数にエンティティのAttribute名を指定することで、Attributeに格納されているデータを取得
+    cell.textLabel.text = [object valueForKey:@"name"];
     return cell;
 }
 

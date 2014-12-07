@@ -32,10 +32,10 @@
 
 - (IBAction)saveContents:(id)sender {
     
-    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    
     //NSManagedObjectContextを取得
+    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = [delegate managedObjectContext];
+    
     //エンティティのオブジェクトを生成。insertNewObjectForEntityForNameの引数にはエンティティの名前を指定。
     Memo *memoEntity = (Memo*)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext:context];
     
@@ -51,7 +51,7 @@
     if (![context save:&error]) {
         NSLog(@"error = %@", error);
     } else {
-        NSLog(@"Insert Completed.");
+        NSLog(@"保存完了！！");
     }
     
     [self dismissViewControllerAnimated:YES completion:nil];
