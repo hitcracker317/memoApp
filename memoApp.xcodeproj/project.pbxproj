@@ -71,7 +71,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9DC3DC431A2F34E200E429DE /* viwwController */ = {
+		9DC3DC431A2F34E200E429DE /* viewController */ = {
 			isa = PBXGroup;
 			children = (
 				9DF6AF2A1A26005E00AAF2A1 /* MEListViewController.h */,
@@ -81,7 +81,7 @@
 				9DF6AF4C1A2618EF00AAF2A1 /* MEInfoViewController.h */,
 				9DF6AF4D1A2618EF00AAF2A1 /* MEInfoViewController.m */,
 			);
-			name = viwwController;
+			name = viewController;
 			sourceTree = "<group>";
 		};
 		9DC3DC471A2F3BC400E429DE /* Entity */ = {
@@ -116,7 +116,7 @@
 			children = (
 				9DF6AF241A26005E00AAF2A1 /* AppDelegate.h */,
 				9DF6AF251A26005E00AAF2A1 /* AppDelegate.m */,
-				9DC3DC431A2F34E200E429DE /* viwwController */,
+				9DC3DC431A2F34E200E429DE /* viewController */,
 				9DF6AF2D1A26005E00AAF2A1 /* Main.storyboard */,
 				9DF6AF301A26005E00AAF2A1 /* Images.xcassets */,
 				9DF6AF321A26005E00AAF2A1 /* LaunchScreen.xib */,
