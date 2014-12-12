@@ -41,10 +41,16 @@
     
     //エンティティのAttributeに各プロパティを格納
     //forKeyにはhAttributeの名前を指定
-    [memoEntity setValue:self.nameTextField.text forKey:@"name"];
-    [memoEntity setValue:self.addressTextField.text forKey:@"address"];
-    [memoEntity setValue:self.phoneTextField.text forKey:@"phone"];
-    [memoEntity setValue:[NSDate date] forKey:@"date"];
+    //[memoEntity setValue:self.nameTextField.text forKey:@"name"];
+    //[memoEntity setValue:self.addressTextField.text forKey:@"address"];
+    //[memoEntity setValue:self.phoneTextField.text forKey:@"phone"];
+    //[memoEntity setValue:[NSDate date] forKey:@"date"];
+    
+    
+    memoEntity.name = self.nameTextField.text;
+    memoEntity.address = self.addressTextField.text;
+    memoEntity.phone = self.phoneTextField.text;
+    memoEntity.date = [NSDate date];
     
     //NSManagedObjectContextのsaveメソッドを読んで、作成したNSManagedObjectをDBに保存
     NSError *error = nil;
