@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Memo.h"
 #import <CoreData/CoreData.h>
 
 @interface MEInfoViewController : UIViewController
 
-@property (nonatomic) NSManagedObject *object;
+@property (nonatomic) Memo *memoObject;
 
 @end

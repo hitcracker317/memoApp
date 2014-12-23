@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "Memo.h"
+
 @interface MEEditViewControler : UIViewController
+
+@property (nonatomic) Memo *memoObject;
+@property (nonatomic,getter=isFromInfoViewController) BOOL isFromInfoViewController;
 
 @end

@@ -171,7 +171,7 @@ static NSString *const cellIdentifier = @"cell";
         MEInfoViewController *infoViewController = [segue destinationViewController];
         
         //遷移先のビューコントローラーに値を受け渡す
-        infoViewController.object = self.memoObject;
+        infoViewController.memoObject = self.memoObject;
     }
 }
 

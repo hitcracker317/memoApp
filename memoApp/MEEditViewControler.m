@@ -7,6 +7,7 @@
 //
 
 #import "MEEditViewControler.h"
+#import "MEInfoViewController.h"
 
 #import "AppDelegate.h"
 #import "Memo.h"
@@ -22,7 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.nameTextField.text = self.memoObject.name;
+    self.addressTextField.text = self.memoObject.address;
+    self.phoneTextField.text = self.memoObject.phone;
 }
 
 
