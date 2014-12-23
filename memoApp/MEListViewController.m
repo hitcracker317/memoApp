@@ -17,8 +17,9 @@
 
 static NSString *const cellIdentifier = @"cell";
 
-@interface MEListViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface MEListViewController ()<UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
+@property (weak, nonatomic) IBOutlet UISearchBar *listSearchBar;
 @property (nonatomic) NSArray *listArray;
 
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
@@ -36,14 +37,15 @@ static NSString *const cellIdentifier = @"cell";
     self.listTableView.tableFooterView = [[UIView alloc] init];
 
     self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.listSearchBar.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [self getListData];
-    [self.listTableView reloadData];
 }
 
-//CoreDataに保存したデータを取得、表示
+//CoreDataに保存したデータを全部取得して表示
 - (void)getListData{
     
     //NSManagedObjectの取得
@@ -62,6 +64,7 @@ static NSString *const cellIdentifier = @"cell";
     //取得してきたデータを配列に格納
     self.listArray = [self.managedObjectContext executeFetchRequest:request error:nil];
     
+    [self.listTableView reloadData];
 }
 
 #pragma mark - UITableViewDelagate
@@ -130,6 +133,35 @@ static NSString *const cellIdentifier = @"cell";
 //テーブルビューを編集モード有効にする
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
     return YES;
+}
+
+#pragma mark - UISearchBarDelegate
+//検索ボタンを押したら実行
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+    [self.listSearchBar resignFirstResponder]; //キーボードを閉じる
+    
+    //エンティティを指定してNSFetchRequestオブジェクトを作成
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Memo"];
+    
+    //検索結果のソートを設定
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
+    [request setSortDescriptors:sortDescriptors];
+    
+    //NSPredicateを使用して検索条件を設定する。(ここではsearchBar.textの文字列を含んでいるnameのデータを取得)
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS %@",searchBar.text];
+    [request setPredicate:predicate];
+    
+    // データを検索、テーブルビューに反映
+    NSError *error = nil;
+    self.listArray = [self.managedObjectContext executeFetchRequest:request error:&error];
+    [self.listTableView reloadData];
+    
+}
+
+//キャンセルボタン(shows Cancel Buttonにチェックすれば表示できる)を押されたときに実行
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar{
+    [self getListData];
 }
 
 #pragma mark - prepareForSegue
