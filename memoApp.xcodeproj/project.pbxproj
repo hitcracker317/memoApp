@@ -18,6 +18,7 @@
 		9DF6AF401A26005E00AAF2A1 /* memoAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF3F1A26005E00AAF2A1 /* memoAppTests.m */; };
 		9DF6AF4B1A260B7700AAF2A1 /* MEEditViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF4A1A260B7700AAF2A1 /* MEEditViewControler.m */; };
 		9DF6AF4E1A2618EF00AAF2A1 /* MEInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF4D1A2618EF00AAF2A1 /* MEInfoViewController.m */; };
+		DCD403B31A494FBA003CBDAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD403B21A494FBA003CBDAE /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		9DF6AF4A1A260B7700AAF2A1 /* MEEditViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEEditViewControler.m; sourceTree = "<group>"; };
 		9DF6AF4C1A2618EF00AAF2A1 /* MEInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEInfoViewController.h; sourceTree = "<group>"; };
 		9DF6AF4D1A2618EF00AAF2A1 /* MEInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEInfoViewController.m; sourceTree = "<group>"; };
+		DCD403B21A494FBA003CBDAE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCD403B31A494FBA003CBDAE /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +99,7 @@
 		9DF6AF141A26005E00AAF2A1 = {
 			isa = PBXGroup;
 			children = (
+				DCD403B21A494FBA003CBDAE /* CoreData.framework */,
 				9DF6AF1F1A26005E00AAF2A1 /* memoApp */,
 				9DF6AF3C1A26005E00AAF2A1 /* memoAppTests */,
 				9DF6AF1E1A26005E00AAF2A1 /* Products */,

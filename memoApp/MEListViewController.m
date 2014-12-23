@@ -13,6 +13,8 @@
 #import "AppDelegate.h"
 #import <CoreData/CoreData.h>
 
+#import "Memo.h"
+
 static NSString *const cellIdentifier = @"cell";
 
 @interface MEListViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -20,7 +22,7 @@ static NSString *const cellIdentifier = @"cell";
 @property (nonatomic) NSArray *listArray;
 
 @property (nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (nonatomic) NSManagedObject *object;
+@property (nonatomic) Memo *memoObject;
 
 @end
 
@@ -41,6 +43,7 @@ static NSString *const cellIdentifier = @"cell";
     [self.listTableView reloadData];
 }
 
+//CoreDataに保存したデータを取得、表示
 - (void)getListData{
     
     //NSManagedObjectの取得
@@ -58,7 +61,6 @@ static NSString *const cellIdentifier = @"cell";
     //先ほど生成したNSFetchオブジェクトの設定により、NSManagedObjectContextからデータを取得。
     //取得してきたデータを配列に格納
     self.listArray = [self.managedObjectContext executeFetchRequest:request error:nil];
-
     
 }
 
@@ -82,9 +84,9 @@ static NSString *const cellIdentifier = @"cell";
     }
     
     //配列からデータ(NSManagedObject)を取り出す
-    self.object = self.listArray[indexPath.row];
+    Memo *memoObject = self.listArray[indexPath.row];
     //valueForKeyメソッドの引数にエンティティのAttribute名を指定することで、Attributeに格納されているデータを取得
-    cell.textLabel.text = [self.object valueForKey:@"name"];
+    cell.textLabel.text = [memoObject valueForKey:@"name"];
     return cell;
 }
 
@@ -92,19 +94,19 @@ static NSString *const cellIdentifier = @"cell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"選択されたセル:%ld",indexPath.row);
     
-    self.object = self.listArray[indexPath.row];
+    Memo *memoObject = self.listArray[indexPath.row];
+    self.memoObject = memoObject;
     //詳細ページへ遷移
     [self performSegueWithIdentifier:@"pushInfoViewController" sender:self];
 }
 
 #pragma mark - UITableViewEditDelagate
-
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         //指定したリストのデータを削除
-        self.object = self.listArray[indexPath.row];
-        [self.managedObjectContext deleteObject:self.object];
+        Memo *memoObject = self.listArray[indexPath.row];
+        [self.managedObjectContext deleteObject:memoObject];
         
         //データを格納している配列からも削除
         NSMutableArray *mutableListArray = [self.listArray mutableCopy];
@@ -130,12 +132,14 @@ static NSString *const cellIdentifier = @"cell";
     return YES;
 }
 
+#pragma mark - prepareForSegue
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ( [[segue identifier] isEqualToString:@"pushInfoViewController"] ) {
         MEInfoViewController *infoViewController = [segue destinationViewController];
+        
         //遷移先のビューコントローラーに値を受け渡す
-        infoViewController.object = self.object;
+        infoViewController.object = self.memoObject;
     }
 }
 
