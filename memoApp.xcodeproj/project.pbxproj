@@ -77,6 +77,7 @@
 		9DC3DC431A2F34E200E429DE /* viewController */ = {
 			isa = PBXGroup;
 			children = (
+				9DF6AF2D1A26005E00AAF2A1 /* Main.storyboard */,
 				9DF6AF2A1A26005E00AAF2A1 /* MEListViewController.h */,
 				9DF6AF2B1A26005E00AAF2A1 /* MEListViewController.m */,
 				9DF6AF491A260B7700AAF2A1 /* MEEditViewControler.h */,
@@ -121,7 +122,6 @@
 				9DF6AF241A26005E00AAF2A1 /* AppDelegate.h */,
 				9DF6AF251A26005E00AAF2A1 /* AppDelegate.m */,
 				9DC3DC431A2F34E200E429DE /* viewController */,
-				9DF6AF2D1A26005E00AAF2A1 /* Main.storyboard */,
 				9DF6AF301A26005E00AAF2A1 /* Images.xcassets */,
 				9DF6AF321A26005E00AAF2A1 /* LaunchScreen.xib */,
 				9DF6AF271A26005E00AAF2A1 /* memoApp.xcdatamodeld */,

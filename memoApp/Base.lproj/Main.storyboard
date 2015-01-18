@@ -51,7 +51,7 @@
                     <navigationItem key="navigationItem" id="pyz-TI-t1M">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="bDN-00-iww">
                             <connections>
-                                <segue destination="ceM-ge-Pa7" kind="modal" identifier="pushInfoViewController" id="NK1-5H-0YI"/>
+                                <segue destination="ceM-ge-Pa7" kind="modal" identifier="pushEditViewController" id="NK1-5H-0YI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

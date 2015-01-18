@@ -168,11 +168,13 @@ static NSString *const cellIdentifier = @"cell";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ( [[segue identifier] isEqualToString:@"pushInfoViewController"] ) {
+        //セルを選択したときは遷移先に値を渡す。
         MEInfoViewController *infoViewController = [segue destinationViewController];
         
         //遷移先のビューコントローラーに値を受け渡す
         infoViewController.memoObject = self.memoObject;
     }
+    
 }
 
 @end
