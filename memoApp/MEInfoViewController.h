@@ -13,6 +13,6 @@
 
 @interface MEInfoViewController : UIViewController
 
-@property (nonatomic) Memo *memoObject;
+@property (nonatomic) NSIndexPath *indexPath;
 
 @end

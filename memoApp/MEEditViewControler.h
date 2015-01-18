@@ -12,7 +12,6 @@
 
 @interface MEEditViewControler : UIViewController
 
-@property (nonatomic) Memo *memoObject;
-@property (nonatomic,getter=isFromInfoViewController) BOOL isFromInfoViewController;
+@property (nonatomic) NSInteger indexPathInteger;
 
 @end

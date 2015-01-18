@@ -24,19 +24,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.nameTextField.text = self.memoObject.name;
-    self.addressTextField.text = self.memoObject.address;
-    self.phoneTextField.text = self.memoObject.phone;
+    if (self.indexPathInteger) {
+        //index.rowの値を保持しているときのみ過去に入力した内容をフォームに反映
+        NSArray *memoListArray = [[MEMemoManager sharedInstance] getMemoList];
+        Memo *memoObject = memoListArray[self.indexPathInteger];
+        self.nameTextField.text = memoObject.name;
+        self.addressTextField.text = memoObject.address;
+        self.phoneTextField.text = memoObject.phone;
+    }
+    
 }
-
 
 - (IBAction)cancel:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)saveContents:(id)sender {
-    //データ追加
-    [[MEMemoManager sharedInstance] addData:self.nameTextField.text address:self.addressTextField.text phone:self.phoneTextField.text];
+    
+    if (self.indexPathInteger) {
+        NSLog(@"更新！");
+    } else {
+        //データ追加
+        [[MEMemoManager sharedInstance] addData:self.nameTextField.text address:self.addressTextField.text phone:self.phoneTextField.text];
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

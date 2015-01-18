@@ -77,12 +77,8 @@ static NSString *const cellIdentifier = @"cell";
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"選択されたセル:%ld",indexPath.row);
-    
-    Memo *memoObject = self.listArray[indexPath.row];
-    self.memoObject = memoObject;
     //詳細ページへ遷移
-    [self performSegueWithIdentifier:@"pushInfoViewController" sender:self];
+    [self performSegueWithIdentifier:@"pushInfoViewController" sender:indexPath];
 }
 
 #pragma mark - UITableViewEditDelagate
@@ -130,13 +126,10 @@ static NSString *const cellIdentifier = @"cell";
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ( [[segue identifier] isEqualToString:@"pushInfoViewController"] ) {
-        //セルを選択したときは遷移先に値を渡す。
+        //選択したセルのインデックスパスを渡す
         MEInfoViewController *infoViewController = [segue destinationViewController];
-        
-        //遷移先のビューコントローラーに値を受け渡す
-        infoViewController.memoObject = self.memoObject;
+        infoViewController.indexPath = sender;
     }
-    
 }
 
 @end

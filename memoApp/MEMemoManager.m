@@ -118,7 +118,6 @@ static MEMemoManager *sharedInstance_ = nil;
     [self saveData]; //作成したNSManagedObjectをDBに保存
 }
 
-
 //データを保存
 - (void)saveData{
     NSError *error = nil;
@@ -150,13 +149,11 @@ static MEMemoManager *sharedInstance_ = nil;
     return searchMemoListArray;
 }
 
-
 //データの削除
 - (void)deleteData:(NSInteger)indexPathRow{
     NSArray *memoListArray = [self getMemoList];
     Memo *memoObject = memoListArray[indexPathRow];
     [self.managedObjectContext deleteObject:memoObject];
 }
-
 
 @end

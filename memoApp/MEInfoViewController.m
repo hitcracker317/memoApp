@@ -9,6 +9,8 @@
 #import "MEInfoViewController.h"
 #import "MEEditViewControler.h"
 
+#import "MEMemoManager.h"
+
 @interface MEInfoViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
@@ -22,14 +24,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.nameLabel.text = self.memoObject.name;
-    self.addressLabel.text = self.memoObject.address;
-    self.phoneLabel.text = self.memoObject.phone;
+    NSArray *memoListArray = [[MEMemoManager sharedInstance] getMemoList];
+    Memo *memoObject = memoListArray[self.indexPath.row];
+    self.nameLabel.text = memoObject.name;
+    self.addressLabel.text = memoObject.address;
+    self.phoneLabel.text = memoObject.phone;
     
     //NSDateをNSStringに変換
     NSDateFormatter *format = [NSDateFormatter new];
     [format setDateFormat:@"yyyy年M月d日:H時m分"]; //NSDateの表示形式を指定
-    NSString *dateString = [format stringFromDate:self.memoObject.date];
+    NSString *dateString = [format stringFromDate:memoObject.date];
     self.dateLabel.text = dateString;
     
 }
@@ -39,19 +43,16 @@
 }
 
 - (IBAction)edit:(id)sender {
-    MEEditViewControler *editViewControler = [MEEditViewControler new];
-    editViewControler.memoObject = self.memoObject;
+    
 }
 
 #pragma mark - prepareForSegue
-
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ( [[segue identifier] isEqualToString:@"openEditViewController"] ) {
+        //編集画面にindexPath.rowの値を受け渡す
         MEEditViewControler *editViewControler = [segue destinationViewController];
-        //遷移先のビューコントローラーに値を受け渡す
-        editViewControler.memoObject = self.memoObject;
-        editViewControler.isFromInfoViewController = YES;
+        editViewControler.indexPathInteger = self.indexPath.row;
     }
 }
 
