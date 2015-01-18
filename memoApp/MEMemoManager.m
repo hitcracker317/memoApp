@@ -105,8 +105,21 @@ static MEMemoManager *sharedInstance_ = nil;
 }
 
 //データの追加
+- (void)addData:(NSString*)name address:(NSString*)address phone:(NSString*)phone{
+    //エンティティのオブジェクトを生成。insertNewObjectForEntityForNameの引数にはエンティティの名前を指定。
+    Memo *memoEntity = (Memo*)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext:self.managedObjectContext];
+    
+    //エンティティのAttributeに各プロパティを格納
+    memoEntity.name = name;
+    memoEntity.address = address;
+    memoEntity.phone = phone;
+    memoEntity.date = [NSDate date];
+    
+    [self saveData]; //作成したNSManagedObjectをDBに保存
+}
 
-//CoreDataに保存
+
+//データを保存
 - (void)saveData{
     NSError *error = nil;
     if (![self.managedObjectContext save:&error]) {

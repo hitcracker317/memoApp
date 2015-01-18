@@ -19,7 +19,7 @@
 + (instancetype)sharedInstance;
 
 - (NSArray*)getMemoList; //データを取得
-//データの追加
+- (void)addData:(NSString*)name address:(NSString*)address phone:(NSString*)phone; //データの追加
 - (void)saveData; //CoreDataに保存
 //データの更新
 - (NSArray*)searchData:(NSString*)searchString; //データの検索

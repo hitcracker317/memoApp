@@ -9,8 +9,8 @@
 #import "MEEditViewControler.h"
 #import "MEInfoViewController.h"
 
-#import "AppDelegate.h"
 #import "Memo.h"
+#import "MEMemoManager.h"
 
 @interface MEEditViewControler ()
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -35,43 +35,9 @@
 }
 
 - (IBAction)saveContents:(id)sender {
-    
-    //NSManagedObjectContextを取得
-    /*
-    AppDelegate *delegate = (AppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSManagedObjectContext *context = [delegate managedObjectContext];
-    
-    if ([self isFromInfoViewController]) {
-        NSLog(@"更新！！");
-        
-        
-        
-    } else {
-        NSLog(@"新規に作成");
-        
-        
-
-        
-        //エンティティのオブジェクトを生成。insertNewObjectForEntityForNameの引数にはエンティティの名前を指定。
-        Memo *memoEntity = (Memo*)[NSEntityDescription insertNewObjectForEntityForName:@"Memo" inManagedObjectContext:context];
-        
-        //エンティティのAttributeに各プロパティを格納
-        memoEntity.name = self.nameTextField.text;
-        memoEntity.address = self.addressTextField.text;
-        memoEntity.phone = self.phoneTextField.text;
-        memoEntity.date = [NSDate date];
-        
-        //NSManagedObjectContextのsaveメソッドを読んで、作成したNSManagedObjectをDBに保存
-        NSError *error = nil;
-        if (![context save:&error]) {
-            NSLog(@"error = %@", error);
-        } else {
-            NSLog(@"保存完了！！");
-        }
-    }
-    
+    //データ追加
+    [[MEMemoManager sharedInstance] addData:self.nameTextField.text address:self.addressTextField.text phone:self.phoneTextField.text];
     [self dismissViewControllerAnimated:YES completion:nil];
-    */
 }
 
 @end
