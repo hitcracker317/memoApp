@@ -14,6 +14,7 @@
 #import <CoreData/CoreData.h>
 
 #import "Memo.h"
+#import "MEMemoManager.h"
 
 static NSString *const cellIdentifier = @"cell";
 
@@ -21,8 +22,6 @@ static NSString *const cellIdentifier = @"cell";
 @property (weak, nonatomic) IBOutlet UITableView *listTableView;
 @property (weak, nonatomic) IBOutlet UISearchBar *listSearchBar;
 @property (nonatomic) NSArray *listArray;
-
-@property (nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) Memo *memoObject;
 
 @end
@@ -47,23 +46,7 @@ static NSString *const cellIdentifier = @"cell";
 
 //CoreDataに保存したデータを全部取得して表示
 - (void)getListData{
-    
-    //NSManagedObjectの取得
-    AppDelegate *delegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    self.managedObjectContext = [delegate managedObjectContext];
-    
-    //NSFetchクラスを使用して、どのエンティティからデータを取得するのかを指定
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Memo"];
-    
-    //ソート条件を指定
-    NSSortDescriptor *sort = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
-    NSArray *sortArray = [[NSArray alloc] initWithObjects:sort, nil]; //ソート条件を指定した配列を生成
-    [request setSortDescriptors:sortArray]; //NSfetchオブジェクトに先ほど生成した配列をセット
-    
-    //先ほど生成したNSFetchオブジェクトの設定により、NSManagedObjectContextからデータを取得。
-    //取得してきたデータを配列に格納
-    self.listArray = [self.managedObjectContext executeFetchRequest:request error:nil];
-    
+    self.listArray = [[MEMemoManager sharedInstance] getMemoList];
     [self.listTableView reloadData];
 }
 
@@ -88,8 +71,7 @@ static NSString *const cellIdentifier = @"cell";
     
     //配列からデータ(NSManagedObject)を取り出す
     Memo *memoObject = self.listArray[indexPath.row];
-    //valueForKeyメソッドの引数にエンティティのAttribute名を指定することで、Attributeに格納されているデータを取得
-    cell.textLabel.text = [memoObject valueForKey:@"name"];
+    cell.textLabel.text = memoObject.name;
     return cell;
 }
 
@@ -108,8 +90,7 @@ static NSString *const cellIdentifier = @"cell";
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
         //指定したリストのデータを削除
-        Memo *memoObject = self.listArray[indexPath.row];
-        [self.managedObjectContext deleteObject:memoObject];
+        [[MEMemoManager sharedInstance] deleteData:indexPath.row];
         
         //データを格納している配列からも削除
         NSMutableArray *mutableListArray = [self.listArray mutableCopy];
@@ -117,12 +98,7 @@ static NSString *const cellIdentifier = @"cell";
         self.listArray = [mutableListArray copy];
         
         //削除したという状態をNSManagedObjectContextに反映
-        NSError *error = nil;
-        if (![self.managedObjectContext save:&error]) {
-            NSLog(@"error = %@", error);
-        } else {
-            NSLog(@"削除完了！！");
-        }
+        [[MEMemoManager sharedInstance] saveData];
         
         //削除したときのテーブルビューのアニメーション
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
@@ -140,23 +116,9 @@ static NSString *const cellIdentifier = @"cell";
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
     [self.listSearchBar resignFirstResponder]; //キーボードを閉じる
     
-    //エンティティを指定してNSFetchRequestオブジェクトを作成
-    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:@"Memo"];
-    
-    //検索結果のソートを設定
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
-    NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
-    [request setSortDescriptors:sortDescriptors];
-    
-    //NSPredicateを使用して検索条件を設定する。(ここではsearchBar.textの文字列を含んでいるnameのデータを取得)
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name CONTAINS %@",searchBar.text];
-    [request setPredicate:predicate];
-    
-    // データを検索、テーブルビューに反映
-    NSError *error = nil;
-    self.listArray = [self.managedObjectContext executeFetchRequest:request error:&error];
+    //検索した文字列に当てはまるもののみをテールブビューに表示
+    self.listArray = [[MEMemoManager sharedInstance] searchData:searchBar.text];
     [self.listTableView reloadData];
-    
 }
 
 //キャンセルボタン(shows Cancel Buttonにチェックすれば表示できる)を押されたときに実行

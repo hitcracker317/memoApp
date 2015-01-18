@@ -51,6 +51,7 @@
         MEEditViewControler *editViewControler = [segue destinationViewController];
         //遷移先のビューコントローラーに値を受け渡す
         editViewControler.memoObject = self.memoObject;
+        editViewControler.isFromInfoViewController = YES;
     }
 }
 

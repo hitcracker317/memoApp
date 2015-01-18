@@ -19,6 +19,7 @@
 		9DF6AF4B1A260B7700AAF2A1 /* MEEditViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF4A1A260B7700AAF2A1 /* MEEditViewControler.m */; };
 		9DF6AF4E1A2618EF00AAF2A1 /* MEInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9DF6AF4D1A2618EF00AAF2A1 /* MEInfoViewController.m */; };
 		DCD403B31A494FBA003CBDAE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCD403B21A494FBA003CBDAE /* CoreData.framework */; };
+		DCD9C20F1A6BD86E00E548FE /* MEMemoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DCD9C20E1A6BD86E00E548FE /* MEMemoManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		9DF6AF4C1A2618EF00AAF2A1 /* MEInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEInfoViewController.h; sourceTree = "<group>"; };
 		9DF6AF4D1A2618EF00AAF2A1 /* MEInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEInfoViewController.m; sourceTree = "<group>"; };
 		DCD403B21A494FBA003CBDAE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		DCD9C20D1A6BD86E00E548FE /* MEMemoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MEMemoManager.h; sourceTree = "<group>"; };
+		DCD9C20E1A6BD86E00E548FE /* MEMemoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MEMemoManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +125,7 @@
 				9DF6AF241A26005E00AAF2A1 /* AppDelegate.h */,
 				9DF6AF251A26005E00AAF2A1 /* AppDelegate.m */,
 				9DC3DC431A2F34E200E429DE /* viewController */,
+				DCD9C2101A6BD87500E548FE /* Manager */,
 				9DF6AF301A26005E00AAF2A1 /* Images.xcassets */,
 				9DF6AF321A26005E00AAF2A1 /* LaunchScreen.xib */,
 				9DF6AF271A26005E00AAF2A1 /* memoApp.xcdatamodeld */,
@@ -155,6 +159,15 @@
 				9DF6AF3E1A26005E00AAF2A1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DCD9C2101A6BD87500E548FE /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				DCD9C20D1A6BD86E00E548FE /* MEMemoManager.h */,
+				DCD9C20E1A6BD86E00E548FE /* MEMemoManager.m */,
+			);
+			name = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +275,7 @@
 				9DF6AF4E1A2618EF00AAF2A1 /* MEInfoViewController.m in Sources */,
 				9DF6AF261A26005E00AAF2A1 /* AppDelegate.m in Sources */,
 				9DC3DC461A2F3A7D00E429DE /* Memo.m in Sources */,
+				DCD9C20F1A6BD86E00E548FE /* MEMemoManager.m in Sources */,
 				9DF6AF2C1A26005E00AAF2A1 /* MEListViewController.m in Sources */,
 				9DF6AF231A26005E00AAF2A1 /* main.m in Sources */,
 			);
